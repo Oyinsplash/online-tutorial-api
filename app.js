@@ -16,7 +16,7 @@ mongoose.connect(process.env.DATABASE_URL,
     { useNewUrlParser: true, useUnifiedTopology: true }
 )
     .then(result => {
-        app.listen(3000);
+        app.listen(process.env.PORT || 5000);
         console.log("Database connected");
     })
     .catch(err => console.log(err));
