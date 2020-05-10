@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
 });
 
 mongoose.connect(process.env.DATABASE_URL,
-    { useNewUrlParser: true, useUnifiedTopology: true }
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex :true }
 )
     .then(result => {
         app.listen(process.env.PORT || 5000);
