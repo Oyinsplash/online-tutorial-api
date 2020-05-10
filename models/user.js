@@ -14,22 +14,17 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     password: {
       type: String,
       required: true,
     },
-    category: {
-      type: String,
-      required: true,
-    },
     userType: {
       type: String,
+      enum: ["admin", "tutor", "student"],
+      default: "student",
       required: true,
-    },
-    isAdmin: {
-      type: Boolean,
-      default: false,
     },
   },
   { timestamps: true }
