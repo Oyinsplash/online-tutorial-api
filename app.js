@@ -1,13 +1,15 @@
 const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
-const userRoute = require('./routes/userRoute')
+const userRoute = require('./routes/userRoute');
+const tutorRoute = require('./routes/tutorRoute');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use('/api/v1',userRoute);
+app.use('/api/v1/users', userRoute);
+app.use('/api/v1/tutors', tutorRoute)
 app.get('/', (req, res) => {
     res.send("Welcome!")
 });
