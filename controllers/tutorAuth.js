@@ -8,29 +8,37 @@ exports.signUp = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  if ((!firstName, !lastName, !email, !password)) {
+  if (!firstName || !lastName || !email || !password) {
     res.status(400).send({
       status: false,
       message: "All fields are required",
     });
     return;
   }
-  User.findOne({ email }).then((tutor) => {
-    if (tutor) {
-      return res.status(423).send({
-        status: false,
-        message: "This email already exists",
-      });
+  User.findOne({ email }).then((user) => {
+    if (user) {
+      return res
+        .status(423)
+        .send({ status: false, message: "This email already exists" });
     }
   });
-  bcrypt.hash(password, 10).then((password) => {
-    let tutor = new User({
-      firstName,
-      lastName,
-      userType,
-      email,
-      password,
-    });
-    return tutor.save();
-  });
+  bcrypt
+    .hash(password, 12)
+    .then((password) => {
+      let user = new User({
+        firstName,
+        lastName,
+        userType,
+        email,
+        password,
+      });
+      console.log("yea");
+      return user.save();
+    })
+    .then(() => {
+      res
+        .status(200)
+        .send({ status: true, message: "Tutor's registration was successful" });
+    })
+    .catch((err) => console.log(err));
 };

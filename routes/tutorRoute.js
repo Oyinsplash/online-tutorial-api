@@ -1,5 +1,6 @@
-const router = require("express").Router;
-
-const {signUp} = require("../controllers/tutorAuth");
+const router = require("express").Router();
+const { signUp } = require("../controllers/tutorAuth");
 
 router.post("/signup", signUp);
+
+module.exports = router;
