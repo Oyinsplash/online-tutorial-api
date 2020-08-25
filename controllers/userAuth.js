@@ -2,7 +2,9 @@ const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+
 // REGISTER USER
+
 exports.signUp = (req, res, next) => {
   const firstName = req.body.email;
   const lastName = req.body.email;
@@ -77,4 +79,7 @@ exports.logIn = (req, res, next) => {
       });
     })
     .catch((err) => console.log(err, "user wasn't logged in"));
+
+  console.log("user has been logged in");
+
 };
