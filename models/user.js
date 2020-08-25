@@ -14,7 +14,8 @@ const userSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true
+
+      unique: true,
     },
     password: {
       type: String,
@@ -24,9 +25,12 @@ const userSchema = new Schema(
       type: String,
       enum: ["admin", "tutor", "student"],
       default: "student",
+
+      required: true,
+    },
+=======
       required: true
     },
-
   },
   { timestamps: true }
 );
